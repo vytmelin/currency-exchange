@@ -1,0 +1,29 @@
+.currency-dropdown,
+.date-dropdown,
+.amount-input,
+.convert-button,
+.history-button {
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+.row {
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.conversion-rate-display,
+.error-display {
+  position: absolute;
+  left: 45%;
+  bottom: 100%;
+}
+
+.error-display {
+  color: red;
+}
+
+.mat-input-element:disabled {
+  color: black !important;
+}

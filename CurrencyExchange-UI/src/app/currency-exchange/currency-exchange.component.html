@@ -1,0 +1,93 @@
+<div class="container" *ngIf="currencies && dates">
+  <div class="row">
+    <mat-form-field class="currency-dropdown" appearance="fill">
+      <mat-label>Exchange From</mat-label>
+      <mat-select
+        [(value)]="selectedFromCurrency"
+        (selectionChange)="onDropdownChange($event)"
+        disableRipple
+      >
+        <mat-option *ngFor="let currency of currencies" [value]="currency">{{
+          currency
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="amount-input">
+      <input
+        [(ngModel)]="amountFromInput"
+        matInput
+        placeholder="Amount"
+        appDecimalDirective
+      />
+    </mat-form-field>
+    <div class="conversion-rate-display" *ngIf="conversionRate && !errorCode">
+      1 {{ selectedFromCurrency }} is {{ conversionRate }}
+      {{ selectedToCurrency }}
+    </div>
+    <div class="error-display" *ngIf="errorCode">
+      {{ getErrorMessage() }}
+    </div>
+    <mat-form-field class="amount-input">
+      <input
+        [(ngModel)]="amountTo"
+        disabled
+        matInput
+        placeholder="Converted amount"
+      />
+    </mat-form-field>
+    <mat-form-field class="currency-dropdown" appearance="fill">
+      <mat-label>Exchange To</mat-label>
+      <mat-select
+        [(value)]="selectedToCurrency"
+        (selectionChange)="onDropdownChange($event)"
+        disableRipple
+      >
+        <mat-option *ngFor="let currency of currencies" [value]="currency">{{
+          currency
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="date-dropdown" appearance="fill">
+      <mat-label>Exchange Rate Date</mat-label>
+      <mat-select
+        [(value)]="selectedDate"
+        (selectionChange)="onDropdownChange($event)"
+        disableRipple
+      >
+        <mat-option *ngFor="let date of dates" [value]="date">{{
+          date
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      [disabled]="isHistoryDisabled()"
+      (click)="onHistoryClick()"
+      class="history-button"
+      mat-raised-button
+      color="primary"
+    >
+      View conversion rate history
+    </button>
+    <button
+      [disabled]="isConvertDisabled()"
+      (click)="onConvertClick()"
+      class="convert-button"
+      mat-raised-button
+      color="primary"
+    >
+      Convert currency
+    </button>
+  </div>
+</div>
+<div
+  id="chartContainer"
+  style="
+    margin-top: 3rem;
+    height: 425px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  "
+></div>
