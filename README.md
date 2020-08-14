@@ -7,4 +7,5 @@ Angular Material is used for frontend components. environment.ts contains the ur
 
 ## API
 Build and run CurrencyExchange.API Web API project. Application fetches exchange rates from ECB on startup and inserts them into an in-memory database.
-After the initial insert, exchange rates are refreshed according to a [CRON](https://crontab.guru) schedule provided in appsettings.json. Default is everyday at 17:30. There you can also configure endpoint URL from which data is taken. Refresh of data is done using a background worker service.
+After the initial insert, exchange rates are refreshed according to a [CRON](https://crontab.guru) schedule provided in appsettings.json. Default is everyday at 17:30. There you can also configure endpoint URL from which data is taken. Refresh of data is done using a background worker service. 
+Xunit/Moq combination used for testing.
